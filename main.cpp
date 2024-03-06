@@ -7,7 +7,7 @@
 using namespace std;
 int asal_kontrol(int a){
   int durum = 1;
-  
+
 
   for (int i = 2; i < a; i++){
 
@@ -18,7 +18,7 @@ int asal_kontrol(int a){
     }
 
   }
- 
+
 
   return true;
 }
@@ -37,6 +37,8 @@ int main (){
 setlocale(LC_ALL, "Turkish");
 int n,e,p,q,phi;
 float d;
+string metin;
+int chptext;
 bas:
 cout<<"1. asal sayiyi giriniz:"; cin>>p;
 cout<<"2. asal sayiyi giriniz:"; cin>>q;
@@ -58,11 +60,22 @@ for (int i=0;i<phi;i++){
  if (d-(int)d==0){
   break;
  }
-
+ 
  
  }
  cout<<"d:"<<d;
+cout<<"şifrelenecek metni giriniz:";
+ getline(cin, metin);
+ int index=0,a;
+ while (index<metin.length()){
+  char chars = metin[index];
+  int ascii = chars;
+  index++;
+  a=pow((int)chars,e);
+  chptext=a%n;
 
+  cout<<chptext<<" ";
+ }
 
 
 
