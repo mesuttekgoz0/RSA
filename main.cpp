@@ -65,7 +65,7 @@ for (int i=0;i<phi;i++){
  }
  cout<<"d:"<<d;
  cout<<"şifrelenecek metni giriniz:";
- cin>>metin;
+ getline(cin, metin);
  int index=0,a;
  while (index<metin.length()){
   char chars = metin[index];
