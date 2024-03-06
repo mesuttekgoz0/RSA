@@ -64,14 +64,14 @@ for (int i=0;i<phi;i++){
  
  }
  cout<<"d:"<<d;
-cout<<"şifrelenecek metni giriniz:";
- getline(cin, metin);
+ cout<<"şifrelenecek metni giriniz:";
+ cin>>metin;
  int index=0,a;
  while (index<metin.length()){
   char chars = metin[index];
   int ascii = chars;
   index++;
-  a=pow((int)chars,e);
+  a=pow(ascii,e);
   chptext=a%n;
 
   cout<<chptext<<" ";
