@@ -36,6 +36,7 @@ int OBEB(int x,int y){
 int main (){
 setlocale(LC_ALL, "Turkish");
 int n,e,p,q,phi;
+int dizi;
 float d;
 string metin;
 int chptext;
@@ -52,6 +53,7 @@ cout<<"Lütfen açık anahtarınız için aşağıdaki sayılardan birini seçin
 for (int j=2;j<phi;j++){
 if (OBEB(phi,j)==1)
 cout<<j<<" ";
+
 }
 cout<<endl;
 cin>>e;
