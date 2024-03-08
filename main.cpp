@@ -3,26 +3,26 @@
 #include <math.h>
 #include <string.h>
 #include <ctime>
+#include <fstream>
+#include <utility> 
 
 using namespace std;
-int asal_kontrol(int a){
+int asal_kontrol(int a){ //seçilen sayıların kontrolü için 
   int durum = 1;
-
-
-  for (int i = 2; i < a; i++){
-
+  for (int i = 2; i < a; i++)
+  {
     if (a % i == 0){
       cout << "asal olmayan sayı girdiniz. "<<endl;
       durum = 0;
       return false;
     }
-
   }
 
 
   return true;
 }
-int OBEB(int x,int y){
+int OBEB(int x,int y)
+{ 
   int min= fmin(x,y);
   int obeb=1;
   for(int i=2;i<=min;i++){
@@ -32,7 +32,48 @@ int OBEB(int x,int y){
   }
   return obeb;
 }
+int USTELMOD(int a, int b, int c)//a^b(mod(c))
+{
+  int _a=a%c;
+  int _b=b;
 
+  if (b==0)
+  {
+    return 1;
+  }
+  while (_b>1)
+  {
+    _a*=a;
+    _a%=c;
+    _b--;
+  }
+return _a; 
+}
+pair<int, pair<int, int> > oklid_algoritmasi(int a, int b) // gizli anahtarı bulmak için kullanılan algoritma
+{
+    int x = 1, y = 0;
+    int xLast = 0, yLast = 1;
+    int q, r, m, n;
+    while (a != 0) 
+    {
+        q = b / a;
+        r = b % a;
+        m = xLast - q * x;
+        n = yLast - q * y;
+        xLast = x; 
+        yLast = y;
+        x = m; 
+        y = n;
+        b = a; 
+        a = r;
+    }
+    return make_pair(b, make_pair(xLast, yLast));
+}
+ 
+int MODULER_TERS(int a, int m) 
+{
+    return (oklid_algoritmasi(a, m).second.first + m) % m;
+}
 int main (){
 setlocale(LC_ALL, "Turkish");
 int n,e,p,q,phi;
@@ -44,7 +85,7 @@ bas:
 cout<<"1. asal sayiyi giriniz:"; cin>>p;
 cout<<"2. asal sayiyi giriniz:"; cin>>q;
 if (asal_kontrol(p)==false||asal_kontrol(q)==false){
-  cout<<"lütfen asal sayı olmasına dikkat ediniz. "<<endl;
+  cout<<"Lütfen asal sayı olmasına dikkat ediniz. "<<endl;
   goto bas;
 }
 n=p*q;
@@ -55,26 +96,19 @@ if (OBEB(phi,j)==1)
 cout<<j<<" ";
 
 }
-cout<<endl;
-cin>>e;
-for (int i=0;i<phi;i++){
- d=(1+i*phi)/e;
- if (d-(int)d==0){
-  break;
- }
+cout<<endl; cin>>e;
+
+d=MODULER_TERS(e,phi);
+cout<<"d:"<<d;
  
- 
- }
- cout<<"d:"<<d;
- cout<<"şifrelenecek metni giriniz:";
+ cout<<"Sifrelenecek metni giriniz:";
  getline(cin, metin);
  int index=0,a;
  while (index<metin.length()){
   char chars = metin[index];
   int ascii = chars;
   index++;
-  a=pow(ascii,e);
-  chptext=a%n;
+  chptext=USTELMOD(ascii,e,n);
 
   cout<<chptext<<" ";
  }
