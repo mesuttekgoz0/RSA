@@ -74,7 +74,9 @@ int MODULER_TERS(int a, int m)
 {
     return (oklid_algoritmasi(a, m).second.first + m) % m;
 }
-int main (){
+
+int main ()
+{
 setlocale(LC_ALL, "Turkish");
 int n,e,p,q,phi;
 int dizi;
@@ -102,7 +104,8 @@ d=MODULER_TERS(e,phi);
 cout<<"d:"<<d;
  
  cout<<"Sifrelenecek metni giriniz:";
- getline(cin, metin);
+ cin>>metin;
+
  int index=0,a;
  while (index<metin.length()){
   char chars = metin[index];
@@ -111,6 +114,7 @@ cout<<"d:"<<d;
   chptext=USTELMOD(ascii,e,n);
 
   cout<<chptext<<" ";
+  return 0;
  }
 
 
