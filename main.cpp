@@ -104,7 +104,7 @@ d=MODULER_TERS(e,phi);
 cout<<"d:"<<d;
  
  cout<<"Sifrelenecek metni giriniz:";
- cin>>metin;
+ getline(cin,metin);
 
  int index=0,a;
  while (index<metin.length()){
