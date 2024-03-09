@@ -101,7 +101,7 @@ cout<<j<<" ";
 cout<<endl; cin>>e;
 
 d=MODULER_TERS(e,phi);
-cout<<"d:"<<d;
+cout<<"d:"<<d<<endl;
  
  ifstream oku_dosya;
  oku_dosya.open("dosya1.txt");
@@ -117,5 +117,6 @@ cout<<"d:"<<d;
   cout<<chptext<<" ";
  }
  }
+ oku_dosya.close();
   return 0;
  }
