@@ -92,6 +92,8 @@ setlocale(LC_ALL, "Turkish");
 int n,e,p,q,phi;
 int dizi;
 float d;
+ifstream oku_dosya;
+ofstream dosya_yaz;
 string metin;
 int chptext;
  char a;
@@ -120,7 +122,7 @@ switch (a)
      d=MODULER_TERS(e,phi);
      cout<<"d:"<<d<<endl;
       
-      ifstream oku_dosya;
+     
       oku_dosya.open("dosya1.txt");
       while (getline(oku_dosya,metin)){
      
@@ -130,16 +132,36 @@ switch (a)
        int ascii = chars;
        index++;
        chptext=USTELMOD(ascii,e,n);
+       dosya_yaz.open("sifreli.txt");
+       dosya_yaz<<chptext<<" ";
+       dosya_yaz.close();
+       }
+       }
+      
+       oku_dosya.close();
+       cout<<"deşifre için anahtarınız. n:"<<n<<" d:"<<d;
+       break;
+    case 'd':
+     cout<<"lütfen size verilen anahtarı giriniz"<<endl;
+     cout<<"n:"<<endl;cin>>n;
+     cout<<"d:"<<endl;cin>>d;
+     oku_dosya.open("sifreli.txt");
+      while (getline(oku_dosya,metin)){
      
-       cout<<chptext<<" ";
+      int index =0,a;
+      while (index<metin.length()){
+       char chars = metin[index];
+       int ascii = chars;
+       index++;
+       chptext=USTELMOD(ascii,d,n);
+       dosya_yaz.open("dosya1.txt");
+       dosya_yaz<<chptext<<" ";
+       dosya_yaz.close();
        }
        }
        oku_dosya.close();
-       break;
-    case 'd':
-  cout<<"lütfen size verilen anahtarı giriniz:";
 
-    break;
+     break;
    
 
  }
