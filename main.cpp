@@ -1,6 +1,6 @@
 #include <iostream>
 #include <locale.h>
-#include <math.h>
+#include <cmath>
 #include <string.h>
 #include <fstream>
 #include <utility> 
@@ -127,8 +127,9 @@ switch (a)
       oku_dosya.open("dosya1.txt");
       while (getline(oku_dosya,metin)){
      
-      int index =0,a;
-       dosya_yaz.open("sifreli.txt");
+      
+      dosya_yaz.open("sifreli.txt");
+      int index =0;
       while (index<metin.length()){
        int chptext=0;
        char chars = metin[index];
