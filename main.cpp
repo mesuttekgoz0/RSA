@@ -103,10 +103,11 @@ cout<<endl; cin>>e;
 d=MODULER_TERS(e,phi);
 cout<<"d:"<<d;
  
- cout<<"Sifrelenecek metni giriniz:";
- getline(cin,metin);
+ ifstream oku_dosya;
+ oku_dosya.open("dosya1.txt");
+ while (getline(oku_dosya,metin)){
 
- int index=0,a;
+ int index =0,a;
  while (index<metin.length()){
   char chars = metin[index];
   int ascii = chars;
@@ -114,22 +115,7 @@ cout<<"d:"<<d;
   chptext=USTELMOD(ascii,e,n);
 
   cout<<chptext<<" ";
+ }
+ }
   return 0;
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- return 0;
-}
