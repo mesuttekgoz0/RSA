@@ -135,7 +135,7 @@ switch (a)
        
        chptext=USTELMOD((int)chars,e,n);
       
-       dosya_yaz<<chptext;
+       dosya_yaz<<chptext<<" ";
        
        index++;
        }
