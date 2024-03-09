@@ -128,14 +128,14 @@ switch (a)
      
       int index =0,a;
       while (index<metin.length()){
-       int chptext=0;
+       int chptext;
        char chars = metin[index];
        int ascii = chars;
-       index++;
        chptext=USTELMOD(ascii,e,n);
        dosya_yaz.open("sifreli.txt");
        dosya_yaz<<chptext;
        dosya_yaz.close();
+       index++;
        }
        }
       
