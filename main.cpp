@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 #include <locale.h>
 #include <math.h>
 #include <string.h>
@@ -9,7 +8,7 @@
 using namespace std;
 int MODULER_TERS(int a, int m); //uzatılmış öklid algoritmasını kullanarak açık anahtardan gizli anahtarı bulmak içinb kullanacağız.
 int asal_kontrol(int a); //seçilen sayıların asal olup olmadığının kontrolü için
-int USTEL_MOD(int a, int b, int c); //a^b(mod(c)) 
+int USTELMOD(int a, int b, int c); //a^b(mod(c)) 
 int OBEB(int x,int y); // Bunu phi sayısı ile aralarında asal olan sayıları bulmak için kullanacağız.
 pair<int, pair<int, int> > oklid_algoritmasi(int a, int b); // uzatılmış öklid algoritması.
 
@@ -30,6 +29,7 @@ int asal_kontrol(int a){
       return false;
     }
   }
+ 
 
 
   return true;
@@ -128,35 +128,35 @@ switch (a)
       while (getline(oku_dosya,metin)){
      
       int index =0,a;
-       while (getline(oku_dosya, metin)) {
-            for (char c : metin) {
-                int chptext = USTEL_MOD(c, e, n);
-                dosya_yaz << chptext << " ";
-            }
+       dosya_yaz.open("sifreli.txt");
+      while (index<metin.length()){
+       int chptext=0;
+       char chars = metin[index];
+       
+       chptext=USTELMOD((int)chars,e,n);
+      
+       dosya_yaz<<chptext;
+       
+       index++;
        }
        dosya_yaz.close();
+       }
+      
        oku_dosya.close();
-       cout << "Şifreleme tamamlandi. Şifreli metin 'sifreli.txt' dosyasina yazildi." << endl;
        cout<<"desifre için anahtariniz. n:"<<n<<" d:"<<d;
        break;
     case 'd':
-     cout << "Lütfen size verilen anahtarı giriniz." << endl;
-        cout << "n: ";
-        cin >> n;
-        cout << "d: ";
-        cin >> d;
-
-        oku_dosya.open("sifreli.txt");
-        dosya_yaz.open("cozulmus_metin.txt");
-
-        while (getline(oku_dosya, metin)) {
-            string iss(metin);
-            int chptext;
-            while (chptext) {
-                char ch = USTEL_MOD(chptext, d, n);
-                dosya_yaz << ch;
-            }
-        }
+     cout<<"lütfen size verilen anahtari giriniz"<<endl;
+     cout<<"n:"<<endl;cin>>n;
+     cout<<"d:"<<endl;cin>>d;
+     oku_dosya.open("sifreli.txt");
+      while (getline(oku_dosya,metin)){
+     
+     
+      
+      
+       }
+       oku_dosya.close();
 
      break;
      default : cout<<"yanliş giriş yaptiniz.";
