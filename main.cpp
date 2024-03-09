@@ -95,7 +95,7 @@ float d;
 ifstream oku_dosya;
 ofstream dosya_yaz;
 string metin;
-int chptext;
+
  char a;
  cout<<"şifreleme için e deşifreleme için d giriniz:"; cin>>a;
 switch (a)
@@ -106,12 +106,12 @@ switch (a)
      cout<<"1. asal sayiyi giriniz:"; cin>>p;
      cout<<"2. asal sayiyi giriniz:"; cin>>q;
      if (asal_kontrol(p)==false||asal_kontrol(q)==false){
-       cout<<"Lütfen asal sayı olmasına dikkat ediniz. "<<endl;
+       cout<<"Lütfen asal sayi olmasina dikkat ediniz. "<<endl;
        goto bas;
      }
      n=p*q;
      phi=(p-1)*(q-1);
-     cout<<"Lütfen açık anahtarınız için aşağıdaki sayılardan birini seçin."<<endl;
+     cout<<"Lütfen açik anahtariniz için aşagidaki sayilardan birini seçin."<<endl;
      for (int j=2;j<phi;j++){
      if (OBEB(phi,j)==1)
      cout<<j<<" ";
@@ -128,39 +128,35 @@ switch (a)
      
       int index =0,a;
       while (index<metin.length()){
+       int chptext=0;
        char chars = metin[index];
        int ascii = chars;
        index++;
        chptext=USTELMOD(ascii,e,n);
        dosya_yaz.open("sifreli.txt");
-       dosya_yaz<<chptext<<" ";
+       dosya_yaz<<chptext;
        dosya_yaz.close();
        }
        }
       
        oku_dosya.close();
-       cout<<"deşifre için anahtarınız. n:"<<n<<" d:"<<d;
+       cout<<"desifre için anahtariniz. n:"<<n<<" d:"<<d;
        break;
     case 'd':
-     cout<<"lütfen size verilen anahtarı giriniz"<<endl;
+     cout<<"lütfen size verilen anahtari giriniz"<<endl;
      cout<<"n:"<<endl;cin>>n;
      cout<<"d:"<<endl;cin>>d;
      oku_dosya.open("sifreli.txt");
       while (getline(oku_dosya,metin)){
      
-      int index =0,a;
-      while (index<metin.length()){
-       char chars = metin[index];
-       int ascii = chars;
-       index++;
-       chptext=USTELMOD(ascii,d,n);
-       dosya_yaz.open("dosya1.txt");
-       dosya_yaz<<chptext<<" ";
-       dosya_yaz.close();
-       }
+     
+      
+      
        }
        oku_dosya.close();
 
+     break;
+     default : cout<<"yanliş giriş yaptiniz.";
      break;
    
 
