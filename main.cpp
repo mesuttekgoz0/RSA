@@ -4,8 +4,8 @@
 #include <string.h>
 #include <fstream>
 #include <utility> 
-
 using namespace std;
+
 int MODULER_TERS(int a, int m); //uzatılmış öklid algoritmasını kullanarak açık anahtardan gizli anahtarı bulmak içinb kullanacağız.
 int asal_kontrol(int a); //seçilen sayıların asal olup olmadığının kontrolü için
 int USTELMOD(int a, int b, int c); //a^b(mod(c)) 
@@ -20,7 +20,7 @@ pair<int, pair<int, int> > oklid_algoritmasi(int a, int b); // uzatılmış ökl
 
 
 int asal_kontrol(int a){ 
-  
+
   for (int i = 2; i < a; i++)
   {
     if (a % i == 0){
@@ -90,7 +90,6 @@ int main ()
 {
 setlocale(LC_ALL, "Turkish");
 int n,e,p,q,phi;
-int dizi;
 float d;
 ifstream oku_dosya;
 ofstream dosya_yaz;
@@ -129,10 +128,9 @@ switch (a)
       
       dosya_yaz.open("sifreli.txt");
       int index =0;
-      while (index<metin.length()){
+      while (index <metin.length()){
        int chptext=0;
        char chars = metin[index];
-       
        chptext=USTELMOD((int)chars,e,n);
       
        dosya_yaz<<chptext<<" ";
