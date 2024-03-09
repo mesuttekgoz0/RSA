@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <locale.h>
 #include <math.h>
 #include <string.h>
@@ -127,33 +128,35 @@ switch (a)
       while (getline(oku_dosya,metin)){
      
       int index =0,a;
-      while (index<metin.length()){
-       int chptext;
-       char chars = metin[index];
-       int ascii = chars;
-       chptext=USTELMOD(ascii,e,n);
-       dosya_yaz.open("sifreli.txt");
-       dosya_yaz<<chptext;
+       while (getline(oku_dosya, metin)) {
+            for (char c : metin) {
+                int chptext = USTEL_MOD(c, e, n);
+                dosya_yaz << chptext << " ";
+            }
+       }
        dosya_yaz.close();
-       index++;
-       }
-       }
-      
        oku_dosya.close();
+       cout << "Şifreleme tamamlandi. Şifreli metin 'sifreli.txt' dosyasina yazildi." << endl;
        cout<<"desifre için anahtariniz. n:"<<n<<" d:"<<d;
        break;
     case 'd':
-     cout<<"lütfen size verilen anahtari giriniz"<<endl;
-     cout<<"n:"<<endl;cin>>n;
-     cout<<"d:"<<endl;cin>>d;
-     oku_dosya.open("sifreli.txt");
-      while (getline(oku_dosya,metin)){
-     
-     
-      
-      
-       }
-       oku_dosya.close();
+     cout << "Lütfen size verilen anahtarı giriniz." << endl;
+        cout << "n: ";
+        cin >> n;
+        cout << "d: ";
+        cin >> d;
+
+        oku_dosya.open("sifreli.txt");
+        dosya_yaz.open("cozulmus_metin.txt");
+
+        while (getline(oku_dosya, metin)) {
+            string iss(metin);
+            int chptext;
+            while (chptext) {
+                char ch = USTEL_MOD(chptext, d, n);
+                dosya_yaz << ch;
+            }
+        }
 
      break;
      default : cout<<"yanliş giriş yaptiniz.";
