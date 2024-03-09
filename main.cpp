@@ -2,12 +2,24 @@
 #include <locale.h>
 #include <math.h>
 #include <string.h>
-#include <ctime>
 #include <fstream>
 #include <utility> 
 
 using namespace std;
-int asal_kontrol(int a){ //seçilen sayıların kontrolü için 
+int MODULER_TERS(int a, int m); //uzatılmış öklid algoritmasını kullanarak açık anahtardan gizli anahtarı bulmak içinb kullanacağız.
+int asal_kontrol(int a); //seçilen sayıların asal olup olmadığının kontrolü için
+int USTEL_MOD(int a, int b, int c); //a^b(mod(c)) 
+int OBEB(int x,int y); // Bunu phi sayısı ile aralarında asal olan sayıları bulmak için kullanacağız.
+pair<int, pair<int, int> > oklid_algoritmasi(int a, int b); // uzatılmış öklid algoritması.
+
+
+
+
+
+
+
+
+int asal_kontrol(int a){  
   int durum = 1;
   for (int i = 2; i < a; i++)
   {
@@ -21,7 +33,7 @@ int asal_kontrol(int a){ //seçilen sayıların kontrolü için
 
   return true;
 }
-int OBEB(int x,int y)
+int OBEB(int x,int y)// 
 { 
   int min= fmin(x,y);
   int obeb=1;
@@ -32,7 +44,7 @@ int OBEB(int x,int y)
   }
   return obeb;
 }
-int USTELMOD(int a, int b, int c)//a^b(mod(c))
+int USTELMOD(int a, int b, int c)
 {
   int _a=a%c;
   int _b=b;
@@ -49,7 +61,7 @@ int USTELMOD(int a, int b, int c)//a^b(mod(c))
   }
 return _a; 
 }
-pair<int, pair<int, int> > oklid_algoritmasi(int a, int b) // gizli anahtarı bulmak için kullanılan algoritma
+pair<int, pair<int, int> > oklid_algoritmasi(int a, int b)
 {
     int x = 1, y = 0;
     int xLast = 0, yLast = 1;
@@ -69,7 +81,6 @@ pair<int, pair<int, int> > oklid_algoritmasi(int a, int b) // gizli anahtarı bu
     }
     return make_pair(b, make_pair(xLast, yLast));
 }
- 
 int MODULER_TERS(int a, int m) 
 {
     return (oklid_algoritmasi(a, m).second.first + m) % m;
@@ -83,40 +94,59 @@ int dizi;
 float d;
 string metin;
 int chptext;
-bas:
-cout<<"1. asal sayiyi giriniz:"; cin>>p;
-cout<<"2. asal sayiyi giriniz:"; cin>>q;
-if (asal_kontrol(p)==false||asal_kontrol(q)==false){
-  cout<<"Lütfen asal sayı olmasına dikkat ediniz. "<<endl;
-  goto bas;
+ char a;
+ cout<<"şifreleme için e deşifreleme için d giriniz:"; cin>>a;
+switch (a)
+{
+  case 'e':
+     
+     bas:
+     cout<<"1. asal sayiyi giriniz:"; cin>>p;
+     cout<<"2. asal sayiyi giriniz:"; cin>>q;
+     if (asal_kontrol(p)==false||asal_kontrol(q)==false){
+       cout<<"Lütfen asal sayı olmasına dikkat ediniz. "<<endl;
+       goto bas;
+     }
+     n=p*q;
+     phi=(p-1)*(q-1);
+     cout<<"Lütfen açık anahtarınız için aşağıdaki sayılardan birini seçin."<<endl;
+     for (int j=2;j<phi;j++){
+     if (OBEB(phi,j)==1)
+     cout<<j<<" ";
+     
+     }
+     cout<<endl; cin>>e;
+     
+     d=MODULER_TERS(e,phi);
+     cout<<"d:"<<d<<endl;
+      
+      ifstream oku_dosya;
+      oku_dosya.open("dosya1.txt");
+      while (getline(oku_dosya,metin)){
+     
+      int index =0,a;
+      while (index<metin.length()){
+       char chars = metin[index];
+       int ascii = chars;
+       index++;
+       chptext=USTELMOD(ascii,e,n);
+     
+       cout<<chptext<<" ";
+       }
+       }
+       oku_dosya.close();
+       break;
+    case 'd':
+  cout<<"lütfen size verilen anahtarı giriniz:";
+
+    break;
+   
+
+ }
+
+
+
+
+
+return 0;
 }
-n=p*q;
-phi=(p-1)*(q-1);
-cout<<"Lütfen açık anahtarınız için aşağıdaki sayılardan birini seçin."<<endl;
-for (int j=2;j<phi;j++){
-if (OBEB(phi,j)==1)
-cout<<j<<" ";
-
-}
-cout<<endl; cin>>e;
-
-d=MODULER_TERS(e,phi);
-cout<<"d:"<<d<<endl;
- 
- ifstream oku_dosya;
- oku_dosya.open("dosya1.txt");
- while (getline(oku_dosya,metin)){
-
- int index =0,a;
- while (index<metin.length()){
-  char chars = metin[index];
-  int ascii = chars;
-  index++;
-  chptext=USTELMOD(ascii,e,n);
-
-  cout<<chptext<<" ";
- }
- }
- oku_dosya.close();
-  return 0;
- }
