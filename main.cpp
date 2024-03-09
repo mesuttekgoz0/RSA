@@ -19,13 +19,12 @@ pair<int, pair<int, int> > oklid_algoritmasi(int a, int b); // uzatılmış ökl
 
 
 
-int asal_kontrol(int a){  
-  int durum = 1;
+int asal_kontrol(int a){ 
+  
   for (int i = 2; i < a; i++)
   {
     if (a % i == 0){
       cout << "asal olmayan sayı girdiniz. "<<endl;
-      durum = 0;
       return false;
     }
   }
