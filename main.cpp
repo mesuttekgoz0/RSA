@@ -148,13 +148,18 @@ switch (a)
      cout<<"n:"<<endl;cin>>n;
      cout<<"d:"<<endl;cin>>d;
      oku_dosya.open("sifreli.txt");
-      while (getline(oku_dosya,metin)){
-     
+     dosya_yaz.open("desifre.txt");
+     int kelime,dechp;
+      while (oku_dosya>>kelime){
+       
+      dechp=USTELMOD(kelime,d,n);
+      dosya_yaz<<(char)dechp;
      
       
       
        }
        oku_dosya.close();
+       dosya_yaz.close();
 
      break;
      default : cout<<"yanliş giriş yaptiniz.";
