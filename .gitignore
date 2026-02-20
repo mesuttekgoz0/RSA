@@ -1,0 +1,30 @@
+# Derlenmiş C++ Dosyaları (.exe ve .o gibi makine kodları git'te tutulmaz)
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.out
+*.app
+
+# Derleme Klasörleri (Eğer cmake vb. kullanıyorsanız)
+build/
+bin/
+obj/
+Debug/
+Release/
+
+# Kurulum/Yedek Dosyalar
+*.bak
+*.tmp
+*.swp
+
+# Visual Studio Code & IDE Ayarları (Size özel ayarlar repo'ya konulmaz)
+.vscode/
+
+# Şifreleme/Deşifreleme Log ve Çıktı Dosyaları
+sifreli.txt
+desifre.txt
+dosya1.txt
+tempCodeRunnerFile.cpp
+tempCodeRunnerFile.txt
