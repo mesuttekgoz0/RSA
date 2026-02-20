@@ -1,11 +1,17 @@
+
 #include <cmath>
 #include <fstream>
 #include <iostream>
 #include <locale.h>
 
+== == == =
+#include <fstream>
+#include <iostream>
+#include <locale.h>
+             >>>>>>> 59cba1a3327f20777252b8d1c26703ac71f31647
 #include <string>
 #include <utility>
-using namespace std;
+    using namespace std;
 
 long long MODULER_TERS(
     long long a,
